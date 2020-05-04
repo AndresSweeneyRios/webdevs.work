@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./built/",
+    "sourceMap": true,
+    "strict": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "target": "es2020",
+    "declaration": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@interfaces/*": ["../@interfaces/*"],
+      "@interfaces": ["../@interfaces"],
+    },
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": ["dist"]
+}
