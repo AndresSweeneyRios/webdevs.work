@@ -20,7 +20,7 @@ yarn
 ```
 
 ## commands
-```json
+```js
 {
   "dev" // starts frontend and backend in development mode
   "build" // builds frontend
