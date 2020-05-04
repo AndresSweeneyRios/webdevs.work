@@ -2,17 +2,47 @@
   section.input.radius
     .icon
       Icon( v-if="icon" ) {{ icon }}
-    input( :placeholder="placeholder" :type="type" )
+
+    input( 
+      :placeholder="placeholder" 
+      :type="type" 
+      @input="output" 
+    )
 </template>
 
 <script>
   import Icon from '@/components/Icon'
 
   export default {
-    props: ['icon', 'placeholder', 'type'],
+    props: {
+      value: {
+        type: String,
+        default () {
+          return ''
+        },
+      },
+
+      icon: {
+        type: String,
+      },
+
+      placeholder: {
+        type: String,
+      },
+
+      type: {
+        type: String,
+      },
+    },
 
     components: {
       Icon,
+    },
+
+    methods: {
+      output ({ target }) {
+        this.$emit('input', target.value)
+      },
     },
   }
 </script>

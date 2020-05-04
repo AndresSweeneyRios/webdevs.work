@@ -1,6 +1,6 @@
 <template lang="pug">
   section.select
-    select.radius( v-model="value" )
+    select.radius( v-model="value" @change="output" )
       slot
 
     Icon.arrow arrow
@@ -18,6 +18,12 @@
 
     components: {
       Icon,
+    },
+
+    methods: {
+      output ({ target }) {
+        this.$emit('input', target.value)
+      },
     },
   }
 </script>

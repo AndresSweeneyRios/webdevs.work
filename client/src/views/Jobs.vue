@@ -2,24 +2,84 @@
   section.jobs
     h1 Jobs
     .row
-      Input.search( placeholder="react, vue.js, express" icon="search" )
+      Input.search( 
+        placeholder="react, vue.js, express" 
+        icon="search" 
+        v-model="search" 
+      )
 
     .row.desktop
-      PriceInput( placeholder="min" )
+      PriceInput( 
+        placeholder="min" 
+        v-model="price" 
+        v-if="priceType !== 'all prices'" 
+      )
 
-      Select
+      Select( v-model="priceType" )
         option fixed
         option hourly
         option all prices
 
-      Input.location( placeholder="Location" icon="map-pin" )
+      Input.location( 
+        placeholder="Location" 
+        icon="map-pin" 
+        v-model="location" 
+      )
 
     .row.mobile
-      PriceInput( placeholder="min" )
+      Input.location( 
+        placeholder="Location" 
+        icon="map-pin" 
+        v-model="location" 
+      )
 
     .row.mobile
-      Input.location( placeholder="Location" icon="map-pin" )
+      PriceInput( 
+        placeholder="min" 
+        v-model="price" 
+        v-if="priceType !== 'all prices'" 
+      )
+
+      Select( v-model="priceType" )
+        option fixed
+        option hourly
+        option all prices
 </template>
+
+<script>
+  import Input from '@/components/Input'
+  import Select from '@/components/Select'
+  import PriceInput from '@/components/PriceInput'
+
+  export default {
+    components: {
+      Input,
+      PriceInput,
+      Select,
+    },
+
+    data () {
+      return {
+        price: {
+          min: 0,
+          max: 1000,
+        },
+
+        priceType: 'all prices',
+
+        search: '',
+
+        location: '',
+      }
+    },
+
+    watch: {
+      priceType (newPrice) {
+        console.log(newPrice)
+      },
+    },
+  }
+</script>
 
 <style lang="sass" scoped>
   section.jobs
@@ -57,17 +117,3 @@
       .mobile
         display: flex
 </style>
-
-<script>
-  import Input from '@/components/Input'
-  import Select from '@/components/Select'
-  import PriceInput from '@/components/PriceInput'
-
-  export default {
-    components: {
-      Input,
-      PriceInput,
-      Select,
-    },
-  }
-</script>

@@ -18,6 +18,10 @@ button, input, textarea, select
   color: var(--white)
   font-size: 14px
 
+input, textarea, *[contenteditable]
+  &:focus
+    outline: none
+
 button
   transition: background-color 0.1s
   cursor: pointer

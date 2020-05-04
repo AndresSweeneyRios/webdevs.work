@@ -8,7 +8,8 @@
         contenteditable="true" 
         @keypress="keypress" 
         @input="({ target }) => min = target.textContent" 
-      )
+        v-once
+      ) {{ value.min }}
 
       span.placeholder min
 
@@ -19,7 +20,8 @@
         contenteditable="true" 
         @keypress="keypress" 
         @input="({ target }) => max = target.textContent" 
-      )
+        v-once
+      ) {{ value.max }}
 
       span.placeholder max
 
@@ -30,14 +32,26 @@
   import Price from '@/components/Price'
 
   export default {
+    props: {
+      value: {
+        type: Object,
+        default () {
+          return {
+            min: 0,
+            max: 1000,
+          }
+        },
+      },
+    },
+
     components: {
       Price,
     },
 
     data () {
       return {
-        min: '',
-        max: '',
+        min: 0,
+        max: 1000,
       }
     },
 
@@ -50,11 +64,24 @@
           return false
         }
       },
+
+      output () {
+        const { min, max } = this
+
+        this.$emit('input', {
+          min: Number(min),
+          max: Number(max), 
+        })
+      },
     },
 
     watch: {
-      min (text) {
-        console.log(text)
+      min () {
+        this.output()
+      },
+
+      max () {
+        this.output()
       },
     },
   }
@@ -87,9 +114,12 @@
 
     .fake-input
       position: relative
+      outline: none
 
       span
         display: block
+
+      span:empty
         min-width: 30px
 
       span + .placeholder
