@@ -1,5 +1,5 @@
 <template lang="pug">
-  a( href="https://github.com/Andr3wRiv3rs/fos" )
+  a( href="https://github.com/Andr3wRiv3rs/webdev-jobs" )
     Icon github
 </template>
 

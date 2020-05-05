@@ -1,5 +1,4 @@
 import { Config } from './Config'
-import { Discord } from './discord'
 
 import { EventEmitter } from 'events'
 
@@ -15,6 +14,4 @@ export interface Props {
   }
 
   ConfigEmitter: EventEmitter
-
-  discord?: Discord
 }

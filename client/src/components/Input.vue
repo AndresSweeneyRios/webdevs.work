@@ -1,11 +1,12 @@
 <template lang="pug">
-  section.input.radius
-    .icon
-      Icon( v-if="icon" ) {{ icon }}
+  section.input.radius( :hasIcon="Boolean(icon)" )
+    .icon( v-if="icon" )
+      Icon {{ icon }}
 
     input( 
       :placeholder="placeholder" 
       :type="type" 
+      :value="value"
       @input="output" 
     )
 </template>
@@ -55,6 +56,7 @@
     overflow: hidden
     color: var(--text)
     fill: var(--text)
+    padding-right: 8px
 
     .icon
       width: 40px
@@ -67,4 +69,7 @@
       flex-grow: 1
       font-weight: bold
       font-size: 16px
+
+    &:not([hasIcon])
+      padding-left: 8px
 </style>

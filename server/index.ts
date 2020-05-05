@@ -7,7 +7,6 @@ import Datastore from 'nedb-promises'
 import router from './router'
 import jwt from './utils/jwt'
 import config from '../config'
-import discord from './utils/discord'
 
 import {
   Props, 
@@ -55,7 +54,6 @@ const init = async (): Promise<void> => {
     db,
     jwt,
     ConfigEmitter,
-    discord: config.oAuth.discord ? discord(config.oAuthCredentials.discord) : null,
   }
 
   router(props)

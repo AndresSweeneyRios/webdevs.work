@@ -1,12 +1,24 @@
 <template lang="pug">
   section.navigation
-    a.header( href="/" ) webdev jobs
+    a.header( href="/" ) {{ config.meta.title }}
     a( href="/jobs" ) Jobs
     span •
     a( href="/developers" ) Developers
     span •
     a( href="/account" ) Account
 </template>
+
+<script>
+  import config from 'config'
+
+  export default {
+    data () {
+      return {
+        config,
+      }
+    },
+  }
+</script>
 
 <style lang="sass" scoped>
   section.navigation
@@ -15,20 +27,21 @@
     align-items: center
     font-weight: bold
     width: 100%
-    color: var(--header)
     flex-wrap: wrap
-    justify-content: center
+    align-content: center
 
     @media (max-width: 550px)
-      margin: 15px 0
+      height: 60px
 
       a.header
         width: 100%
-        text-align: center
+        margin-bottom: 10px
+        margin-top: 10px
 
     a, span
       font-size: 14px
       text-decoration: none
+      color: var(--header)
 
     a.header
       margin-right: auto

@@ -2,12 +2,7 @@ import path from 'path'
 
 import {
   Config, 
-  Role, 
 } from '../@interfaces'
-
-const defaultRole: Role = {
-  id: 'default',
-}
 
 const config: Config = {
   development: {
@@ -15,41 +10,13 @@ const config: Config = {
     frontendPort: 44444,
   },
 
-  textChannels: [
-    {
-      name: 'general',
-      id: 'general',
-      permissions: [
-        {
-          role: defaultRole,
-          canWrite: true,
-          canRead: true,
-          canEmbed: true,
-          canAttach: true,
-          canPing: true,
-          canPingAll: false,
-          isMuted: false,
-        },
-      ],
-    },
-  ],
-
   meta: {
-    title: 'FOS',
-    description: 'An encrypted, self-hosted chatroom.',
+    title: 'webdevs.work',
+    description: 'Hire web developers or find web work.',
     thumbnail: 'https://example.com/thumb.png',
-    themeColor: '#EB7A96',
+    themeColor: '#ffffff',
     url: 'https://example.com',
   },
-
-  oAuth: {
-    discord: false,
-    github: false,
-    google: false,
-    twitter: false,
-  },
-
-  oAuthCredentials: {},
 
   dataPath: path.join(__dirname, '..', 'data'),
 

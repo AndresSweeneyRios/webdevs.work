@@ -1,4 +1,4 @@
-# FOS
+# webdev jobs
 
 ## prerequisites
 - node.js 12+

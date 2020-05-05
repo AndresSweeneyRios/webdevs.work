@@ -15,14 +15,16 @@
     font-weight: bold
     width: 100%
     flex-wrap: wrap
-    justify-content: center
+    align-content: center
 
     @media (max-width: 550px)
       margin: 15px 0
+      height: 60px
 
       .company
         width: 100%
-        text-align: center
+        margin-top: 10px
+        margin-bottom: 10px
 
     a, span
       font-size: 13px

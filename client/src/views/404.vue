@@ -19,7 +19,7 @@
     align-items: center
     flex-direction: column
     margin: auto
-    background-image: linear-gradient(to right, orange , yellow, green, cyan, blue, violet)
+    background-image: linear-gradient(to right, rgba(black, 0.9), rgba(black, 0.7), rgba(black, 0.5), rgba(black, 0.3), rgba(black, 0.5), rgba(black, 0.7), rgba(black, 0.9))
     background-size: 400% 100%
     background-clip: text
     text-fill-color: transparent
@@ -28,7 +28,8 @@
     -moz-background-clip: text
     -moz-text-fill-color: transparent
     animation: rainbowMove infinite 10s linear
-    filter: saturate(70%) brightness(2)
+    filter: saturate(0%) brightness(1)
+    height: 100vh
 
     h1:first-child
       font-size: 40px

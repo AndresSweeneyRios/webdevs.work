@@ -9,16 +9,16 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '*',
-    name: '404',
-    layout: BlankLayout,
-    component: NotFound,
-  },
-  {
     path: '/jobs',
     name: 'Jobs',
     // component: Jobs,
-    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "jobs" */ '../views/Jobs.vue'),
+    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "jobs" */ '../views/Jobs/index.vue'),
+  },
+  {
+    path: '/jobs/post',
+    name: 'PostJob',
+    // component: PostJob,
+    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "postjob" */ '../views/Jobs/Post.vue'),
   },
   {
     path: '/login',
@@ -32,11 +32,17 @@ const routes = [
     layout: BlankLayout,
     component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "signup" */ '../views/Signup.vue'),
   },
+  {
+    path: '*',
+    name: '404',
+    layout: BlankLayout,
+    component: NotFound,
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  // base: '/',
   routes,
 })
 

@@ -21,7 +21,7 @@
         option all prices
 
       Input.location( 
-        placeholder="Location" 
+        placeholder="location" 
         icon="map-pin" 
         v-model="location" 
       )
@@ -40,22 +40,36 @@
         v-if="priceType !== 'all prices'" 
       )
 
-      Select( v-model="priceType" )
+      Select.select( v-model="priceType" )
         option fixed
         option hourly
         option all prices
+
+    .row
+      button.submit Search
+
+    p.subtext Looking to hire? 
+      a( href="/jobs/post" ) Post a job
+
+    .list
+      Job
+      Job
+      Job
+      Job
 </template>
 
 <script>
   import Input from '@/components/Input'
   import Select from '@/components/Select'
   import PriceInput from '@/components/PriceInput'
+  import Job from '@/components/Job'
 
   export default {
     components: {
       Input,
       PriceInput,
       Select,
+      Job,
     },
 
     data () {
@@ -87,6 +101,7 @@
     flex-direction: column
     align-items: center
     padding-top: 90px
+    padding-bottom: 30px
 
     h1
       margin-bottom: 19px
@@ -107,8 +122,20 @@
       > *:not(:last-child)
         margin-right: 15px
 
+    p.subtext
+      margin-bottom: 30px
+
     .mobile
       display: none
+
+    .submit
+      flex-grow: 1
+
+    .list
+      width: 100%
+
+    .job:not(:last-child)
+      border-bottom: 1px solid rgba(#A4A4A4, 0.27)
 
     @media (max-width: 700px)
       .desktop
@@ -116,4 +143,7 @@
 
       .mobile
         display: flex
+
+      .select
+        flex-grow: 1
 </style>

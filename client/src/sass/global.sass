@@ -5,6 +5,18 @@
   padding: 0
   box-sizing: border-box
   font-family: Manrope
+  scrollbar-width: thin
+  scrollbar-color: black white
+  -webkit-tap-highlight-color: transparent
+
+::-webkit-scrollbar 
+  width: 8px
+  height: 8px
+  background-color: transparent
+    
+::-webkit-scrollbar-thumb
+  background: black
+  border-right: 1px solid white
 
 html
   font-size: 14px
@@ -23,66 +35,39 @@ input, textarea, *[contenteditable]
     outline: none
 
 button
-  transition: background-color 0.1s
+  transition: background-color 0.1s, color 0.1s
   cursor: pointer
   display: flex
   align-items: center
   justify-content: center
-  color: var(--white)
+  color: white
+  background-color: var(--button-background)
   position: relative
-  transition: color 0.2s
+  text-transform: lowercase
+  padding: 9px 21px
+  font-weight: bold
+
+  &:hover
+    background-color: var(--subtext)
 
   &[disabled]
     opacity: 0.7
     pointer-events: none
-  
-  > *
-    position: relative
-    z-index: 1
-
-  &::after
-    background-color: var(--accent)
-    clip-path: circle(0% at 50% 50%)
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    pointer-events: none
-    content: ''
-    transition: clip-path 0.3s, opacity 0.2s
-    transition-timing-function: ease-out
-    z-index: 0
-
-  &.fill::before
-    background-color: var(--accent)
-    width: 100%
-    height: 100%
-    position: absolute
-    top: 0
-    left: 0
-    content: ''
-    z-index: 0
-
-  &.fill::after
-    filter: hue-rotate(-15deg) brightness(1.5)
 
   > svg
     height: 45%
     opacity: 0.9
 
-  &:hover
-    // color: var(--background)
-    
-    &::after
-      clip-path: circle(100% at 50% 50%)
-      // opacity: 1
-
 a
-  color: var(--accent)
+  color: var(--link)
+  text-decoration: none
   
   &:hover
-    color: var(--white)
+    text-decoration: underline
+
+.subtext
+  color: var(--subtext)
+  font-weight: bold
 
 h1
   font-size: 30px
@@ -90,5 +75,5 @@ h1
 h1, h2, h3, h4, h5, h6
   color: var(--header)
 
-.radius
+.radius, button
   border-radius: 3px
