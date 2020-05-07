@@ -1,16 +1,27 @@
 <template lang="pug">
   Price.price
     span $
+    .fake-input
+      span.editable( 
+        contenteditable
+        @keypress="keypress" 
+        @input="({ target }) => min = target.textContent" 
+        v-once
+      ) {{ value.min }}
+
+      span.placeholder min
+
+    span -
 
     .fake-input
       span.editable( 
         contenteditable
         @keypress="keypress" 
-        @input="({ target }) => price = target.textContent" 
+        @input="({ target }) => max = target.textContent" 
         v-once
-      ) {{ value }}
+      ) {{ value.max }}
 
-      span.placeholder price
+      span.placeholder max
 </template>
 
 <script>
@@ -19,9 +30,12 @@
   export default {
     props: {
       value: {
-        type: Number,
+        type: Object,
         default () {
-          return 0
+          return {
+            min: 0,
+            max: 1000,
+          }
         },
       },
     },
@@ -32,7 +46,8 @@
 
     data () {
       return {
-        price: 0,
+        min: 0,
+        max: 1000,
       }
     },
 
@@ -47,12 +62,21 @@
       },
 
       output () {
-        this.$emit('input', this.price)
+        const { min, max } = this
+
+        this.$emit('input', {
+          min: Number(min),
+          max: Number(max), 
+        })
       },
     },
 
     watch: {
-      price () {
+      min () {
+        this.output()
+      },
+
+      max () {
         this.output()
       },
     },

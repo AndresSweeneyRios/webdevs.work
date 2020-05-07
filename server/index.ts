@@ -1,12 +1,12 @@
 import chalk from 'chalk'
 import path from 'path'
-import fs from 'fs'
-import { EventEmitter } from 'events'
 import Datastore from 'nedb-promises'
 
 import router from './router'
 import jwt from './utils/jwt'
 import config from '../config'
+import secrets from '../config/secrets'
+import twilio from 'twilio'
 
 import {
   Props, 
@@ -20,29 +20,7 @@ const failure = (...args: Array<string>): void => {
   console.log(`${ chalk.bgRed.black(' API ') }`, ...args, '\n')
 }
 
-const importCustomConfig = async (): Promise<void> => {
-  const { default: customConfig } = await import('../config/custom')
-
-  Object.assign(config, customConfig)
-}
-
 const init = async (): Promise<void> => {
-  const ConfigEmitter = new EventEmitter()
-
-  const customConfigPath = path.join(__dirname, '../config/custom.ts')
-
-  await importCustomConfig()
-
-  fs.watch(customConfigPath, async () => {
-    if (typeof require !== 'undefined') {
-      for (const key of Object.keys(require.cache)) {
-        delete require.cache[key]
-      }
-    }
-
-    await importCustomConfig()
-  })
-
   const db = (name: string): Datastore => new Datastore(
     path.join(config.dataPath, name),
   )
@@ -53,7 +31,13 @@ const init = async (): Promise<void> => {
     failure,
     db,
     jwt,
-    ConfigEmitter,
+    twilio: twilio(
+      secrets.twilio.accountSid,
+      secrets.twilio.authToken,
+      { 
+        lazyLoading: true,
+      },
+    ).verify.services(secrets.twilio.serviceSid),
   }
 
   router(props)

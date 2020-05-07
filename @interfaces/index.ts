@@ -1,5 +1,5 @@
 export { Config } from './Config'
-export { CustomConfig } from './CustomConfig'
+export { Secrets } from './Secrets'
 export { Props } from './Props'
 export { User } from './User'
 export { Developer } from './Developer'

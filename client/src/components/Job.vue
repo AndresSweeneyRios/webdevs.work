@@ -20,7 +20,17 @@
   import marked from 'marked'
 
   export default {
-    props: ['short', 'job'],
+    props: {
+      short: {
+        type: Boolean,
+        required: false,
+      },
+
+      job: {
+        type: Object,
+        requred: true,
+      },
+    },
 
     components: {
       Price,
@@ -38,7 +48,17 @@
       },
 
       renderedDescription () {
-        return marked(this.job.description)
+        const markdown = marked(this.job.description)
+
+        if (this.short) {
+          const content = document.createElement('div')
+
+          content.innerHTML = markdown
+
+          return content.textContent
+        } else {
+          return markdown
+        }
       },
     },
   }

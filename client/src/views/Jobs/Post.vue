@@ -8,6 +8,18 @@
       div
         Input( v-model="job.title" )
 
+      h3 Price
+      div.price
+        PriceInput( v-model="job.price" )
+
+        Select( v-model="job.currency" )
+          option USD
+          option CAD
+
+        Select( v-model="job.priceType" )
+          option fixed
+          option hourly
+
       h3 Description
       div( contenteditable @input="({ target }) => job.description = target.innerText" v-once ) {{ job.description }}
 
@@ -18,6 +30,8 @@
 <script>
   import Job from '@/components/Job.vue'
   import Input from '@/components/Input.vue'
+  import Select from '@/components/Select.vue'
+  import PriceInput from '@/components/PriceInput.vue'
   import Switcher from '@/components/Switcher.vue'
 
   export default {
@@ -25,6 +39,8 @@
       Job,
       Input,
       Switcher,
+      PriceInput,
+      Select,
     },
 
     data () {
@@ -34,7 +50,8 @@
         job: {
           title: 'Vue.js Developer Needed',
           location: 'Redmond, WA',
-          price: '$50.00',
+          price: 50.00,
+          currency: 'USD',
           priceType: 'hourly',
           description: `Lorem ipsum dolor sit amet, **consectetur adipiscing elit.** Nunc augue mi, *porttitor id nunc non*, ~blandit pharetra ante~. \n\n***\n \nVivamus imperdiet, eros sit amet lacinia lacinia, dolor neque laoreet nibh, id fringilla justo massa vitae eros.\n \n- Nulla cursus tempor maximus. \n- Etiam nec quam dolor. \n- Aenean in arcu porttitor. \n\nLaoreet ante eu, cursus nunc. Etiam sed nunc in magna iaculis sagittis. Etiam accumsan convallis porttitor. Morbi in semper ipsum. `,
           createdAt: Date.now(),
@@ -66,4 +83,13 @@
 
     div:not(:last-child)
       margin-bottom: 40px
+
+    .price
+      display: flex
+
+      // > .select
+      //   flex-grow: 1
+
+      > *:not(:last-child)
+          margin-right: 15px
 </style>

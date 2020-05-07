@@ -1,6 +1,6 @@
 import { Config } from './Config'
 
-import { EventEmitter } from 'events'
+import { Twilio } from 'twilio'
 
 export interface Props {
   config: Config
@@ -13,5 +13,5 @@ export interface Props {
     verify: Function
   }
 
-  ConfigEmitter: EventEmitter
+  twilio: any
 }

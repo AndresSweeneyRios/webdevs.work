@@ -10,10 +10,11 @@
   import Icon from './Icon'
 
   export default {
-    data () {
-      return {
-        value: 'all prices',
-      }
+    props: {
+      value: {
+        type: String,
+        required: true,
+      },
     },
 
     components: {

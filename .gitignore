@@ -29,3 +29,4 @@ config.json
 /config/custom
 /credentials
 /config/custom.ts
+/config/secrets.ts

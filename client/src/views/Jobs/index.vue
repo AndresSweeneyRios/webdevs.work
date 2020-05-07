@@ -9,7 +9,7 @@
       )
 
     .row.desktop
-      PriceInput( 
+      MinMaxPriceInput( 
         placeholder="min" 
         v-model="price" 
         v-if="priceType !== 'all prices'" 
@@ -34,7 +34,7 @@
       )
 
     .row.mobile
-      PriceInput( 
+      MinMaxPriceInput( 
         placeholder="min" 
         v-model="price" 
         v-if="priceType !== 'all prices'" 
@@ -52,22 +52,21 @@
       a( href="/jobs/post" ) Post a job
 
     .list
-      Job
-      Job
-      Job
-      Job
+      Job( :job="defaultJob" short )
+      Job( :job="defaultJob" short )
+      Job( :job="defaultJob" short )
 </template>
 
 <script>
   import Input from '@/components/Input'
   import Select from '@/components/Select'
-  import PriceInput from '@/components/PriceInput'
+  import MinMaxPriceInput from '@/components/MinMaxPriceInput'
   import Job from '@/components/Job'
 
   export default {
     components: {
       Input,
-      PriceInput,
+      MinMaxPriceInput,
       Select,
       Job,
     },
@@ -84,6 +83,15 @@
         search: '',
 
         location: '',
+
+        defaultJob: {
+          title: 'Vue.js Developer Needed',
+          location: 'Redmond, WA',
+          price: '$50.00',
+          priceType: 'hourly',
+          description: `Lorem ipsum dolor sit amet, **consectetur adipiscing elit.** Nunc augue mi, *porttitor id nunc non*, ~blandit pharetra ante~. \n\n***\n \nVivamus imperdiet, eros sit amet lacinia lacinia, dolor neque laoreet nibh, id fringilla justo massa vitae eros.\n \n- Nulla cursus tempor maximus. \n- Etiam nec quam dolor. \n- Aenean in arcu porttitor. \n\nLaoreet ante eu, cursus nunc. Etiam sed nunc in magna iaculis sagittis. Etiam accumsan convallis porttitor. Morbi in semper ipsum. `,
+          createdAt: Date.now(),
+        },
       }
     },
 
