@@ -2,33 +2,22 @@
   .form.login
     h1 Log in
 
-    .social
-      button.fill
-        Icon google
+    Input( placeholder="email or phone number" v-model="username" icon="user" )
+    Input( placeholder="password" type="password" v-model="password" icon="lock" )
 
-      button.fill
-        Icon github
-
-      button.fill
-        Icon twitter
-
-      button.fill
-        Icon discord
-
-    .divider OR
-
-    input( placeholder="Username.." v-model="username" )
-    input( placeholder="Password.." type="password" v-model="password" )
+    p.subtext
+      router-link( to="/forgot-password" ) Forgot password?
 
     button.fill( :disabled="!valid" @click="submit" )
       span Submit
-    p 
+
+    p.subtext 
       span Don't have an account? 
-      a( href="/signup" ) Sign up
+      router-link( to="/signup" ) Sign up
 </template>
 
 <script>
-  import Icon from '@/components/Icon'
+  import Input from '@/components/Input'
 
   export default {
     data () {
@@ -39,7 +28,7 @@
     },
 
     components: {
-      Icon,
+      Input,
     },
 
     methods: {
@@ -56,8 +45,6 @@
           username, 
           password, 
         } = this
-
-        const { rsa } = this.$store.state
 
         this.api('/api/users/login', { 
           method: 'post', 

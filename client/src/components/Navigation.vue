@@ -5,7 +5,7 @@
     span •
     a( href="/developers" ) Developers
     span •
-    a( href="/account" ) Account
+    a( href="/login" ) Log in
 </template>
 
 <script>

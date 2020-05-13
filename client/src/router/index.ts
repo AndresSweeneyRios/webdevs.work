@@ -23,13 +23,11 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    layout: BlankLayout,
     component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
   },
   {
     path: '/signup',
     name: 'Signup',
-    layout: BlankLayout,
     component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "signup" */ '../views/Signup.vue'),
   },
   {

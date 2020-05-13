@@ -23,6 +23,8 @@
       h3 Description
       div( contenteditable @input="({ target }) => job.description = target.innerText" v-once ) {{ job.description }}
 
+      button Submit
+
     div( v-show="view === 'preview'" )
       Job( :job="job" )
 </template>

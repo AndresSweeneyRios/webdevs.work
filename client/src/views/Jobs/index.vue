@@ -49,7 +49,7 @@
       button.submit Search
 
     p.subtext Looking to hire? 
-      a( href="/jobs/post" ) Post a job
+      router-link( to="/jobs/post" ) Post a job
 
     .list
       Job( :job="defaultJob" short )

@@ -1,20 +1,22 @@
 <template lang="pug">
-  .form.signup
+  .form.login
     h1 Sign up
 
-    input( placeholder="Username.." v-model="username" )
-    input( placeholder="Password.." type="password" v-model="password" )
-    input( placeholder="Confirm password.." type="password" v-model="confirmPassword" )
+    Input( placeholder="email or phone number" v-model="username" icon="user" )
+    Input( placeholder="password" type="password" v-model="password" icon="lock" )
+    Input( placeholder="confirm password" type="password" v-model="password" icon="lock" )
 
     button.fill( :disabled="!valid" @click="submit" )
       span Submit
 
-    p 
+    p.subtext 
       span Already have an account? 
-      a( href="/login" ) Log in
+      router-link( to="/login" ) Log in
 </template>
 
 <script>
+  import Input from '@/components/Input'
+
   export default {
     data () {
       return {
@@ -22,6 +24,10 @@
         password: '',
         confirmPassword: '',
       }
+    },
+
+    components: {
+      Input,
     },
 
     methods: {
@@ -42,8 +48,6 @@
           username, 
           password, 
         } = this
-
-        const { rsa } = this.$store.state
 
         this.api('/api/users/new', { 
           method: 'post', 
