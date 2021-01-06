@@ -15,7 +15,7 @@
     "@andrewrivers/simple_webrtc": "^0.4.3",
     "@koa/router": "^8.0.8",
     "argon2": "^0.26.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chalk": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.11.0",
